@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 
 class Profile extends Component {
-	constructor(){
-		super();
-		this.state = {}
+  	// You can just use state here, the linter does the work for you ;)
+	state = {
 	}
 
 render(){

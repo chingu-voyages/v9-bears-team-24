@@ -2,25 +2,23 @@ import React from 'react';
 import Profile from './Profile';
 import LogIn from '../component/Login';
 import Register from '../component/Register';
+import { Route } from 'react-router-dom'
 
-class App extends React.Component{
-	constructor(props){
-		super(props)
-		this.state = {
+class App extends React.Component {
+  // You can just use state here, the linter does the work for you ;)
+	state = {
 			Route: "login"
-		}
 	}
-
-  onRouteChange = (route) =>{
-  	this.setState({ Route: route})
+  
+  render() {
+    return (
+        <div className="App">
+          <Route exact path="/" component={LogIn} />
+          <Route path="/register" component={Register} />
+          <Route path="/profile" component={Profile} />
+        </div>
+    );
   }
-  render(){
-  return (
-    <div className="App">
-    {(this.state.Route === "home") ? <Profile/> : (this.state.Route === "login") ? <LogIn onRouteChange={this.onRouteChange}/> : <Register onRouteChange={this.onRouteChange}/>}
-    </div>
-  );
-}
 }
 
 
