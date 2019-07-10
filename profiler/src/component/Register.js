@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 class Register extends React.Component{
 	// You can just use state here, the linter does the work for you ;)
@@ -17,26 +18,26 @@ class Register extends React.Component{
 		this.setState({password: event.target.value})
 	}
     onButtonSubmit = () => {
-    	this.props.onRouteChange('home');
-	// 	fetch('https://floating-reef-84982.herokuapp.com/registreer',{
-	// 		method:'post',
-	// 		headers: {'Content-type': 'application/json'},
-	// 		body: JSON.stringify({
-	// 			email:this.state.email,
-	// 			password:this.state.password,
-	// 			naam: this.state.naam
-	// 		})
-	// })
-	// 	.then(response => response.json())
-	// 	.then(user =>{
-	// 		if (user.id){
-	// 			this.props.laadUser(user)
-	// 		    this.props.onRouteChange('home');
-	// 		}
-	// 	})
+		fetch('http://localhost:3003/register',{
+			method:'post',
+			headers: {'Content-type': 'application/json'},
+			body: JSON.stringify({
+				email:this.state.email,
+				password:this.state.password,
+				naam: this.state.naam
+			})
+	})
+		.then(response => response.json())
+		.then(user =>{
+			if (user.id){
+				console.log("werkend")
+			}
+		})
+		.catch(err =>{console.log(err)})
 	}
 
 	render(){
+		console.log(this.props.Route)
 		return (
 			<article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l shadow-3 mw6 center">
 				<main className="pa4 black-80">
@@ -57,7 +58,7 @@ class Register extends React.Component{
 							</div>
 						</fieldset>
 						<div className="">
-							<input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" onClick={this.onButtonSubmit}value="Register"/>
+							<Link to="/"><input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" onClick={this.onButtonSubmit}value="Register"/></Link>
 						</div>
 					</div>
 				</main>

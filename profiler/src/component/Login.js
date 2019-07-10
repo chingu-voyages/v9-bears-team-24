@@ -16,21 +16,21 @@ class LogIn extends React.Component {
 	}
 
 	onButtonSubmit = () => {
-		// fetch('https://floating-reef-84982.herokuapp.com/login',{
-		// 	method:'post',
-		// 	headers: {'Content-type': 'application/json'},
-		// 	body: JSON.stringify({
-		// 		email:this.state.logInEmail,
-		// 		password:this.state.logInPassword
-		// 	})
-	 //    })
-		// .then(res => res.json())
-		// .then(user =>{
-		// 	if(user){
-		// 	this.props.loadUser(user)
-		// 	this.props.onRouteChange('home');
-		// 	}
-		// })
+		fetch('http://localhost:3003/login',{
+			method:'post',
+			headers: {'Content-type': 'application/json'},
+			body: JSON.stringify({
+				email:this.state.logInEmail,
+				password:this.state.logInPassword
+			})
+	    })
+		.then(res => res.json())
+		.then(user =>{
+			if(user){
+			console.log("werkend")
+			}
+		})
+		.catch(err =>{console.log(err)})
 	}
 	render(){
 		return (
