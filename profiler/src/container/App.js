@@ -4,25 +4,49 @@ import LogIn from '../component/Login';
 import Register from '../component/Register';
 import { Route } from 'react-router-dom'
 
-const State = {
+const initialState = {
         email:"",
-        password:"",
-        naam: ""
+        gender:"",
+        name: "",
+        age:"",
+        socialLinks:{
+          FaceBook:"",
+          Twitter:"",
+          Instagram:"",
+          LinkedIn:"",
+          Github:"",
+          Website:"",
+        }
       }
 
 
 class App extends React.Component {
   // You can just use state here, the linter does the work for you ;)
-	loadUser = ()=>{
+  constructor(){
+    super();
+    this.state = initialState;
+  }
+  
 
-  } 
+	loadUser = (data)=>{
+    this.setState((state, props) => {
+      console.log("new state", data)
+      return {
+                    id: data.id,
+                    name:data.name,
+                    email: data.email,
+                     }}
+              )
+  }
+
    render() {
+    
     return (
         <div className="App">
           <Suspense fallback={<div><h3>Loading...</h3></div>}>
-            <Route exact path="/" component={LogIn} />
-            <Route path="/register" component={Register} state={State}/>
-            <Route path="/profile" component={Profile} />
+            <Route exact path="/" render={(props) => <LogIn {...props} loadUser={this.loadUser} />} />
+            <Route path="/register" render={(props) => <Register {...props} loadUser={this.loadUser} />}/>
+            <Route path="/profile" render={(props) => <Profile {...props} state={this.state} />} />
           </Suspense>
         </div>
     );

@@ -27,7 +27,7 @@ class LogIn extends React.Component {
 		.then(res => res.json())
 		.then(user =>{
 			if(user){
-			console.log("werkend")
+			this.props.loadUser(user)
 			}
 		})
 		.catch(err =>{console.log(err)})

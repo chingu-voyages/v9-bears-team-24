@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 
 class Register extends React.Component{
 	// You can just use state here, the linter does the work for you ;)
-	state = {
+	constructor(){
+		super();
+		this.state = {
 		name:"",
 		email:'',
 		password:''
 	}
+	}
+	
     onNameChange = (event)=>{
 		this.setState({name: event.target.value})
 	}
@@ -24,7 +28,7 @@ class Register extends React.Component{
 			body: JSON.stringify({
 				email:this.state.email,
 				password:this.state.password,
-				naam: this.state.naam
+				name: this.state.name
 			})
 	})
 		.then(response => response.json())
@@ -37,7 +41,6 @@ class Register extends React.Component{
 	}
 
 	render(){
-		console.log(this.props.Route)
 		return (
 			<article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l shadow-3 mw6 center">
 				<main className="pa4 black-80">
