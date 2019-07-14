@@ -1,0 +1,43 @@
+.list-container {
+    width: 100vw;
+    list-style: none;
+    margin: 10px 0 0 0;
+    padding: 0
+}
+
+.list-element {
+    color: rgb(48, 48, 48);
+    margin: 0 10px 15px 10px;
+    min-height: 150px;
+    background: rgb(252, 252, 252);
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 32px 3px rgba(0,0,0,0.59); 
+    box-shadow: 0px 1px 8px 0px rgba(0,0,0,0.09);
+    box-sizing: content-box
+}
+
+.element-title {
+    color: rgb(131, 155, 175)
+}
+
+.list-element > .left {
+    float: left;
+    width: 25%;
+    padding: 20px;
+    height: 100%
+}
+
+.list-element > .center {
+    float: left;
+    width: 50%;
+    padding: 20px;
+    height: 100%
+}
+
+.list-element > .right {
+    float: left;
+    width: 25%;
+    padding: 20px;
+    height: 100%
+}

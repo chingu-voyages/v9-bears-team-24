@@ -2,6 +2,7 @@ import React, {Suspense, Lazy} from 'react';
 import Profile from './Profile';
 import LogIn from '../component/Login';
 import Register from '../component/Register';
+import Contacts from '../container/Contacts';
 import { Route } from 'react-router-dom'
 
 const initialState = {
@@ -47,6 +48,7 @@ class App extends React.Component {
             <Route exact path="/" render={(props) => <LogIn {...props} loadUser={this.loadUser} />} />
             <Route path="/register" render={(props) => <Register {...props} loadUser={this.loadUser} />}/>
             <Route path="/profile" render={(props) => <Profile {...props} state={this.state} />} />
+            <Route path="/contacts" render={(props) => <Contacts {...props} state={this.state} />} />
           </Suspense>
         </div>
     );
