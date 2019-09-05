@@ -1,11 +1,11 @@
 
 const regHandler = (req,res,bcrypt,database)=>{
 	const { email,name,password } = req.body;
-	console.log(name)
 	if (!name || !email || !password){
 		return res.status(400).json("form not properly filled in");
 	}
 	const hash =bcrypt.hashSync(password);
+	
 	database.transaction(trx =>{
 		trx.insert({
 			hash: hash,
@@ -31,7 +31,7 @@ const regHandler = (req,res,bcrypt,database)=>{
 	.catch(err=>{
 		res.status(400).json('cannot register')
 	})
-};
+}
 
 module.exports ={
 	regHandler
